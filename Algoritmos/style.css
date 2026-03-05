@@ -69,75 +69,92 @@ body{
     border-radius: 0.8rem; /*arredondar borda*/
 }
 
+/* Grupo principal do lado direito da interface */
 .content-right-group{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 50%;
-    width: 100%;
-    gap: 2rem; /*gap entre os elementos*/
+    display: flex; /* ativa o Flexbox para organizar os elementos */
+    align-items: center; /* centraliza os elementos verticalmente */
+    justify-content: center; /* centraliza os elementos horizontalmente */
+    flex-direction: column; /* coloca os elementos um embaixo do outro */
+    height: 50%; /* ocupa metade da altura do container pai */
+    width: 100%; /* ocupa toda a largura disponível */
+    gap: 2rem; /* espaço entre os elementos filhos */
 }
 
+
+/* Linha que contém label e input */
 .content-right-row{
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    width: 95%;
-    height: 5vh;  
-    gap: 0.4rem;
+    display: flex; /* usa flexbox para alinhar os elementos da linha */
+    align-items: center; /* centraliza verticalmente */
+    justify-content: flex-start; /* alinha os elementos à esquerda */
+    width: 95%; /* ocupa 95% da largura do container */
+    height: 5vh;  /* altura baseada na altura da tela */
+    gap: 0.4rem; /* pequeno espaço entre label e input */
 }
 
+
+/* Estilo aplicado aos textos (labels) dentro da linha */
 .content-right-row label{
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-size: 1.1rem;
+    font-family: "Roboto", sans-serif; /* define a fonte do texto */
+    font-weight: 400; /* peso normal da fonte */
+    font-size: 1.1rem; /* tamanho da fonte */
 }
 
+
+/* Estilo aplicado aos campos de entrada (inputs) */
 .content-right-row input{
-    padding: 0.2rem 0.3rem;
-    border: 1px solid rgba(0, 0, 0, 0.262);
-    border-radius: 0.2rem;
+    padding: 0.2rem 0.3rem; /* espaço interno do input */
+    border: 1px solid rgba(0, 0, 0, 0.262); /* borda cinza clara */
+    border-radius: 0.2rem; /* cantos levemente arredondados */
 }
 
+
+/* Container onde fica o botão */
 .content-right-button{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 95%;
-    height: 5vh; 
-    gap: 0.4rem;
+    display: flex; /* usa flexbox */
+    align-items: center; /* centraliza verticalmente */
+    justify-content: center; /* centraliza horizontalmente */
+    width: 95%; /* ocupa quase toda a largura */
+    height: 5vh; /* altura baseada na altura da tela */
+    gap: 0.4rem; /* espaço entre possíveis elementos */
 }
 
+
+/* Estilo do botão */
 .content-right-button button{
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    padding: 0.7rem 2rem;
-    background-color: white;
-    border: 1px solid rgba(0, 0, 0, 0.262);
-    border-radius: 0.2rem;
-    cursor: pointer;
-    transition: 0.3s;
+    font-family: "Roboto", sans-serif; /* define a fonte */
+    font-weight: 400; /* peso normal da fonte */
+    padding: 0.7rem 2rem; /* espaço interno do botão */
+    background-color: white; /* cor de fundo branca */
+    border: 1px solid rgba(0, 0, 0, 0.262); /* borda cinza clara */
+    border-radius: 0.2rem; /* cantos arredondados */
+    cursor: pointer; /* muda o cursor para mãozinha ao passar por cima */
+    transition: 0.3s; /* cria uma animação suave para mudanças */
 }
 
+
+/* Efeito quando o mouse passa sobre o botão */
 .content-right-button button:hover{
-    background-color: #B3EFB2;
+    background-color: #B3EFB2; /* muda a cor do botão para verde claro */
 }
 
+
+/* Área onde aparecem os resultados do cálculo */
 .content-right-res{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 45%;
-    width: 90%;
-    gap: 0.3em;
-    border-top: 1px solid rgba(0, 0, 0, 0.243); /* borda para visuaização*/
-    border-radius: 0.1rem;
+    display: flex; /* ativa flexbox */
+    align-items: center; /* centraliza verticalmente */
+    justify-content: center; /* centraliza horizontalmente */
+    flex-direction: column; /* organiza os elementos em coluna */
+    height: 45%; /* ocupa 45% da altura */
+    width: 90%; /* ocupa 90% da largura */
+    gap: 0.3em; /* espaço pequeno entre os elementos */
+    border-top: 1px solid rgba(0, 0, 0, 0.243); /* linha superior para separar visualmente */
+    border-radius: 0.1rem; /* cantos levemente arredondados */
 }
 
+
+/* Estilo do título dentro da área de resultados */
 .content-right-res h3{
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-size: 1.1rem;
+    font-family: "Roboto", sans-serif; /* define a fonte */
+    font-weight: 400; /* peso normal */
+    font-size: 1.1rem; /* tamanho da fonte */
 }

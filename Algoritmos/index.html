@@ -70,89 +70,169 @@
 </html>
 
 <script>
+
+    // Função responsável por calcular o gasto de energia e possível prejuízo
     function calcular1() {
+
+        // Pega o valor digitado no input de kWh gasto e converte para número
         let kwhGasto = Number(id_kwhGasto.value);
+
+        // Pega o preço do kWh digitado pelo usuário
         let precoKWh = Number(id_precoKWh.value);
+
+        // Pega quantas horas por dia a iluminação fica ligada
         let horasLigado = Number(id_horasLigado.value);
+
+        // Calcula o gasto total em dinheiro (kWh gasto * preço do kWh)
         let totalGasto = kwhGasto * precoKWh;
+
+        // Variáveis que irão armazenar a porcentagem de prejuízo e o valor do prejuízo
         let porcentagem = 0;
         let prejuizo = 0;
 
+
+        // Se as luzes ficarem ligadas mais de 16h (tempo ideal)
         if (horasLigado > 16) {
+
+            // Calcula o custo das horas extras que não seriam necessárias
             prejuizo = (totalGasto / horasLigado) * (horasLigado - 16);
-        }else if (horasLigado == 16) {
+
+            // Caso esteja exatamente no valor ideal
+        } else if (horasLigado == 16) {
+
+            // Não existe prejuízo
             prejuizo = 0;
+
+            // Caso esteja abaixo do ideal
         } else if (horasLigado < 16) {
-            prejuizo = (16 - horasLigado) * 365 * precoKWh; //mudar aqui ele não tem prejuizo em kwh e sim por falta
+
+            // Calcula uma estimativa de perda por falta de iluminação
+            // multiplicando as horas faltantes por dias do ano e preço do kWh
+            prejuizo = (16 - horasLigado) * 365 * precoKWh;
         }
 
+        // Calcula qual porcentagem do gasto total corresponde ao prejuízo
         porcentagem = (prejuizo / totalGasto) * 100;
 
+
+        // Verificação de erro caso os campos estejam preenchidos incorretamente
         if (horasLigado < 0 || kwhGasto == 0 || precoKWh <= 0) {
+
             id_mensagem.innerHTML = `Você nâo preenchou todos os campos de forma correta <b> tente novamente </b>`;
+
+            // Caso as luzes não estejam ligadas
         } else if (horasLigado == 0) {
+
             id_mensagem.innerHTML = `O seu plantio não está sendo iluminada adequadamente, isso pode a perda do plantio`;
+
+            // Caso esteja abaixo do tempo ideal
+        } else if (horasLigado < 16) {
+
+            id_mensagem.innerHTML = `O seu plantio não vai crescer como deveria, podendo perder sua pesquisa ou atrasando para ${horasLigado * 365} horas no ano`;
+
+            // Caso esteja tudo correto ou acima do ideal
+        } else {
+
+            // Exibe os resultados do cálculo
+            id_mensagem.innerHTML = `O seu gasto monetário anual com iluminação em seu ambiente controlado é de R$${totalGasto.toFixed(2)},<br>
+            sendo R$${prejuizo.toFixed(2)} só de <span style="color:red">prejuízo</span>, o que equivale a ${porcentagem.toFixed(2)}% do gasto total.<br><br>
+            
+            <b>Obs: </b> O valor de retrabalho por câmara da <i>Arabidopsis thaliana</i> não pode ser calculado, por varios fatores 
+            váriaveis de produção que deve ser calculado pelo cliente`;
         }
-        else {
-            id_mensagem.innerHTML = `O seu gasto monetário anual com iluminação em seu ambiente controlado é de R$${totalGasto.toFixed(2)},<br>sendo R$${prejuizo.toFixed(2)}
-         só de <span style="color:red">prejuízo</span>, o que equivale a ${porcentagem.toFixed(2)}% do gasto total.<br><br>
-         <b>Obs: </b> O valor de retrabalho por câmara da <i>Arabidopsis thaliana</i> não pode ser calculado, por varios fatores 
-         váriaveis de produção que deve ser calculado pelo cliente`;
-        }
+
+        // Mostra o valor do prejuízo no console do navegador (para debug)
         console.log(prejuizo);
     }
 
 
 
+    // Função responsável por analisar se a iluminação está adequada
     function calcular2() {
+
+        // Quantidade de horas de iluminação por dia
         let qtd_horas = Number(id_qtd_horas.value);
+
+        // Intensidade atual da luz medida em µmol·m⁻²·s⁻¹
         let luz_atual = Number(id_luz_atual.value);
 
-        // Cálculo que transforma em porcentagem.
+
+        // Cálculo da porcentagem abaixo do ideal
         luz_inferior = (100 - ((luz_atual * 100) / 120));
+
+        // Cálculo da porcentagem acima do ideal
         luz_superior = (((luz_atual * 100) / 120) - 100);
 
+
+        // Verifica se os campos foram preenchidos
         if (qtd_horas == 0 || luz_atual == 0) {
+
             id_resultado_luz.innerHTML = `Você nâo preenchou todos os campos de forma correta <b> tente novamente </b>`;
+
+            // Iluminação extremamente baixa
         }
-        else if  (luz_atual < 20) {
+        else if (luz_atual < 20) {
+
             id_resultado_luz.innerHTML = `A iluminação do lote está ${luz_inferior.toFixed(2)}% menor do que o necessário para o plantio de 
             <i>Arabidopsis thaliana</i>, o ideal é entre 120-200 µmol·m⁻²·s⁻¹.
             O desenvolvimento da planta será extremamente lento e impedirá a florada e reprodução, não produzindo sementes.`;
+
+            // Iluminação abaixo do ideal
         } else if (luz_atual < 120) {
+
             id_resultado_luz.innerHTML = `A iluminação do lote está ${luz_inferior.toFixed(2)}% menor do que o necessário para o plantio de 
             <i>Arabidopsis thaliana</i>, o ideal é entre 120-200 µmol·m⁻²·s⁻¹.
             O ciclo da planta ocorrerá de forma completa, porém lento.`;
+
+            // Iluminação ideal
         } else if (luz_atual < 200) {
+
             id_resultado_luz.innerHTML = `A iluminação do lote está no nível ideal, a <i> Arabidopsis thaliana </i>
              viveria cerca de 60 dias e completaria seu ciclo corretamente, caso as horas de
              iluminação estejam corretas também.`;
+
+            // Iluminação acima do ideal
         } else {
+
             id_resultado_luz.innerHTML = `A iluminação do lote está ${luz_superior.toFixed(2)}% maior do que o necessário para o plantio de 
             <i>Arabidopsis thaliana</i>, o ideal é entre 120-200 µmol·m⁻²·s⁻¹. Isso
              causará fotoinibição, afetando o crescimento da planta que não produzirá sementes.`;
         }
+
+
+        // Avaliação das horas de iluminação
         if (qtd_horas == 0 || luz_atual == 0) {
+
             id_resultado_horas.innerHTML = ``;
+
+            // Abaixo do ideal
         }
         else if (qtd_horas < 16) {
+
             id_resultado_horas.innerHTML = `A quantidade de horas de iluminação está a baixo do ideal, O ciclo será muito lento
             e a floração atrasará, mesmo com a iluminação ideal.`;
+
+            // Ideal
         } else if (qtd_horas == 16) {
+
             id_resultado_horas.innerHTML = `A quantidade de horas de iluminação está adequada, O ciclo poderá
             ocorrer corretamente, caso a iluminação esteja adequada também.`;
+
+            // Acima do ideal
         } else {
+
             id_resultado_horas.innerHTML = `A quantidade de horas de iluminação está a acima do ideal, O ciclo será acelerado demais
             o que acarretará em estresse fisiológico, comprometendo resultados positivos, mesmo com a iluminação ideal.`;
         }
 
-        
 
-        //iluminação ideal = 120-200 µmol·m⁻²·s⁻¹
-        //Tempo de cultivo = 60 dias, sendo 16h do dia e 8h da noite
-        //iluminação baixa = 20 µmol·m⁻²·s⁻¹ 
+        // Informações usadas como referência científica
+        // iluminação ideal = 120-200 µmol·m⁻²·s⁻¹
+        // Tempo de cultivo = 60 dias, sendo 16h de luz e 8h de escuro
+        // iluminação baixa = < 20 µmol·m⁻²·s⁻¹ 
         // iluminação média = 20-120 µmol·m⁻²·s⁻¹ 
         // iluminação alta = > 200 µmol·m⁻²·s⁻¹ 
 
     }
+
 </script>
