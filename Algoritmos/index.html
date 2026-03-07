@@ -120,7 +120,7 @@
         // Verificação de erro caso os campos estejam preenchidos incorretamente
         if (horasLigado < 0 || kwhGasto == 0 || precoKWh <= 0) {
 
-            id_mensagem.innerHTML = `Você nâo preenchou todos os campos de forma correta, <b> tente novamente </b>`;
+            id_mensagem.innerHTML = `Você nâo preenchou todos os campos de forma correta, <b> tente novamente. </b>`;
 
             // Caso as luzes não estejam ligadas
         } else if (horasLigado == 0) {
@@ -169,7 +169,7 @@
         // Verifica se os campos foram preenchidos
         if (qtd_horas == 0 || luz_atual == 0) {
 
-            id_resultado_luz.innerHTML = `Você nâo preenchou todos os campos de forma correta <b> tente novamente </b>`;
+            id_resultado_luz.innerHTML = `Você nâo preenchou todos os campos de forma correta <b> tente novamente. </b>`;
 
             // Iluminação extremamente baixa
         }
