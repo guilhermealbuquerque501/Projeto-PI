@@ -163,7 +163,7 @@
         luz_inferior = (100 - ((luz_atual * 100) / 120));
 
         // Cálculo da porcentagem acima do ideal
-        luz_superior = (((luz_atual * 100) / 120) - 100);
+        luz_superior = (((luz_atual * 100) / 200) - 100);
 
 
         // Verifica se os campos foram preenchidos
@@ -187,7 +187,7 @@
             O ciclo da planta ocorrerá de forma completa, porém lento.`;
 
             // Iluminação ideal
-        } else if (luz_atual < 200) {
+        } else if (luz_atual <= 200) {
 
             id_resultado_luz.innerHTML = `A iluminação do lote está no nível ideal, a <i> Arabidopsis thaliana </i>
              viveria cerca de 60 dias e completaria seu ciclo corretamente, caso as horas de
