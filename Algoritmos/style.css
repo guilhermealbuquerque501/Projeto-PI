@@ -47,20 +47,19 @@ body{
 }
 
 .container-simulador-logo img{
-    height: 60px; /*tamanho da imagem em px*/
+    height: 110px; /*tamanho da imagem em px*/
     display: flex;
-    transform: translateX(10%);
 }
 
 .container-simulador-logo2 img{
-    height: 250px; /*tamanho da imagem em px*/
+    height: 320px; /*tamanho da imagem em px*/
     display: flex;
 }
 
 .container-simulador-titulo h1{
     font-family: "Roboto", sans-serif; /*font style*/
     font-weight: 400; /*grossura da font*/
-    font-size: 1.4rem;
+    font-size: 2.2rem;
 }
 
 .content-simulador{
@@ -112,8 +111,8 @@ body{
 /* Estilo aplicado aos textos (labels) dentro da linha */
 .content-right-row label{
     font-family: "Roboto", sans-serif; /* define a fonte do texto */
-    font-weight: 400; /* peso normal da fonte */
-    font-size: 0.9rem; /* tamanho da fonte */
+    font-weight: 500; /* peso normal da fonte */
+    font-size: 1.2rem; /* tamanho da fonte */
 }
 
 
@@ -140,13 +139,14 @@ body{
 /* Estilo do botão */
 .content-right-button button{
     font-family: "Roboto", sans-serif; /* define a fonte */
-    font-weight: 400; /* peso normal da fonte */
+    font-weight: 500; /* peso normal da fonte */
     padding: 0.7rem 2rem; /* espaço interno do botão */
     background-color: white; /* cor de fundo branca */
     border: 1px solid rgba(0, 0, 0, 0.262); /* borda cinza clara */
     border-radius: 0.2rem; /* cantos arredondados */
     cursor: pointer; /* muda o cursor para mãozinha ao passar por cima */
     transition: 0.3s; /* cria uma animação suave para mudanças */
+    font-size: 1.1em;
 }
 
 
@@ -174,5 +174,5 @@ body{
 .content-right-res h3{
     font-family: "Roboto", sans-serif; /* define a fonte */
     font-weight: 400; /* peso normal */
-    font-size: 0.9rem; /* tamanho da fonte */
+    font-size: 1.25rem; /* tamanho da fonte */
 }
